@@ -21,7 +21,15 @@ for row in worksheet.iter_rows(min_row=2):
 with open(outputPath, "w") as f:
     for l in table:
         f.write(
-            "\t".join([l[1] + "." + worksheet.title + ".", "1", "IN", l[0], l[3]])
+            "\t".join(
+                [
+                    l[1] + "." + worksheet.title + ".",
+                    "1",
+                    "IN",
+                    l[0],
+                    l[3] + ("." if l[0] == "CNAME" else ""),
+                ]
+            )
             + "\n"
         )
 
